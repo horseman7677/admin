@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import { makeStyles } from '@material-ui/core';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import About from './components/About'
+import Labour from './components/Labour'
+import Items from './components/Items'
+import Navbar from './components/Navbar';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+  }
+}))
 
 function App() {
+  const classes = useStyles()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className={classes.root}>
+        <Routes>
+          <Route exact path='/' element={<Navbar />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/labour' element={<Labour />} />
+          <Route path='/items' element={<Items />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
